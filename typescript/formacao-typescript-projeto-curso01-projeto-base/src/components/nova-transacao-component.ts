@@ -5,6 +5,8 @@ import Conta from "../types/Conta.js";
 
 const elementoFormulario = document.querySelector(".block-nova-transacao form") as HTMLFormElement;
 elementoFormulario.addEventListener("submit", function(event) {
+    try
+    {
     event.preventDefault();
     if (!elementoFormulario.checkValidity()) {
         alert("Por favor, Preencha todos os campos da transação!");
@@ -27,6 +29,9 @@ elementoFormulario.addEventListener("submit", function(event) {
 
     Conta.registrarTransacao(novaTransacao);
     SaldoComponent.atualizar();
-    elementoFormulario.reset();
-    
+    elementoFormulario.reset();    
+    }
+    catch(erro){
+        alert(erro.message);
+    }
 });
